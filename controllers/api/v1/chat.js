@@ -1,28 +1,33 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const chatSchema = new Schema({
-
-    text: String,
-    user: String,
-
-});
- 
-const Chat = mongoose.model('chat', chatSchema);
+const Chat = require('../../../models/Chat');
 
 const getAll = (req, res) => {
-    res.json({
-        "status": "succes" ,
-        "data" : {
-            "chat": []
+    Chat.find({
+        "user": "vince"
+    }, (err,docs) => {
+        if(!err){
+            res.json({
+                "status": "succes",
+                "data": {
+                    "chats": docs
+                }
+            });
         }
     });
 }
 
-const create = (req, res) => {
+const create = (req, res, next) => {
+    
     let chat = new Chat();
-    chat.text = "my first chat message";
-    chat.user = "vince";
+    chat.text = req.body.text;
+    chat.user = req.body.user;
     chat.save( (err, doc) =>{
+        if(err){
+            res.json({
+                "status": "error",
+                "message": "couldn't send chat item"
+            })
+        }
+
         if(!err){
             res.json({
                 "status": "succes",
