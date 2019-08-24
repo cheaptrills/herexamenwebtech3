@@ -1,4 +1,4 @@
-var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
+var btnRegister = document.querySelector('#submit').addEventListener("click",(e)=>{
     let username = document.querySelector('#username').value;
     let password = document.querySelector('#password').value;
 
@@ -17,7 +17,7 @@ var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
         }).then(json => {
             if(json.status ==="succes"){
                 let feedback = document.querySelector(".feedback");
-                feedback.textContent = "login is complete";
+                feedback.textContent = "register complete";
                 feedback.classList.remove('hidden');
             }
         })
