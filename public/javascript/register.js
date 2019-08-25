@@ -10,7 +10,8 @@ var btnRegister = document.querySelector('#submit').addEventListener("click",(e)
             body: JSON.stringify({
 
                 "username": username,
-                "password": password
+                "password": password,
+                
             })
         }).then(response =>{
                 return response.json();

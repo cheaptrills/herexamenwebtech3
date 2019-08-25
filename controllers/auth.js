@@ -25,19 +25,21 @@ let password = req.body.password;
 };
 
 const login = async (req, res, next) => {
- const user = await User.authenticate()(req.body.username, req.body.password).then(result => {
-    res.json({
+    try{
+        const { user } = await User.authenticate()(req.body.username, req.body.password);
+        res.json({
+            
         "status": "succes",
         "data": {
-            "user": result
+            "user": user
         }
-    });
- }).catch(error =>{
-    res.json({
-        "status": "error",
-        "message": error
-    })
- });
+        });
+    }catch(exception){
+        res.json({
+            "status": "error",
+            "message": exception
+        });
+    }
 };
 
 module.exports.signup = signup;
