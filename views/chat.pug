@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .box
+  h1 chat
+  form()
+    .form-group
+      label(for='chat') 
+      textarea#chat
+    .form-group
+      button#submit(type="button" class="btn_submit") send
+    div#chatwindow
+
+  script(src="../javascript/chat.js")
