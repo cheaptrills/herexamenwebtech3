@@ -3,7 +3,7 @@ extends layout
 block content
   .box
   h1 login
-  form(action= '', method='post')
+  form()
     .form-group
       label(for='username') username
       input#username(type="text")
@@ -11,9 +11,9 @@ block content
       label(for='password') password
       input#password(type="password")
     .form-group
-      button#submit(type="submit" class="btn_submit") login
+      button#submit(type="button" class="btn_submit") login
   .actions
    a(href='signup')
     button no account yet? make it here
 
-  script(src="../public/javascript/login.js")
+  script(src="../javascript/login.js")
