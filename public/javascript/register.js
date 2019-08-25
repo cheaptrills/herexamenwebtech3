@@ -23,6 +23,10 @@ var btnRegister = document.querySelector('#submit').addEventListener("click",(e)
                 let feedback = document.querySelector(".feedback");
                 feedback.textContent = "register complete";
                 feedback.classList.remove('hidden');
+
+                let token = json.data.token;
+                localStorage.setItem("token",token);
+                window.location.href = "http://localhost:3000";
             }
         })
         alert("YEET");
