@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
 const chatSchema = new Schema({
 
@@ -10,6 +11,12 @@ const chatSchema = new Schema({
 const Chat = mongoose.model('chat', chatSchema);
 
 const getAll = (req, res) => {
+    const { authorization } =   req.headers;
+    var stringeske = "bearer "; 
+    var token = authorization.slice(stringeske.length, authorization.length);
+
+    const data = jwt.decode(token);
+
     res.json({
         "status": "succes" ,
         "data" : {
