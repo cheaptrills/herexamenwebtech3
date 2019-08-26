@@ -14,7 +14,8 @@ const date = req.body.date;
     await user.save().then(result =>{
         let token = jwt.sign({
             uid: result.id,
-            date: user.date
+            date: user.date,
+            username: user.username
         }, "secretje");
 
          res.json({

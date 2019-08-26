@@ -1,14 +1,22 @@
 const jwt = require('jsonwebtoken');
 const Chat = require("../../../models/Chat");
 
-const getAll = async(req, res) => {
-    try{
-        const { authorization } =   req.headers;
+const cutBday = (headers) =>{
+
+    const { authorization } = headers;
         var stringeske = "bearer "; 
         var token = authorization.slice(stringeske.length, authorization.length);
 
-        const {date} = jwt.decode(token);
+        const {date, uid,username} = jwt.decode(token);
         let birthday = date.toString().substr(4);
+
+        return {birthday, uid,username};
+
+}
+
+const getAll = async(req, res) => {
+    try{
+        const {birthday} = cutBday(req.headers);
 
         const result = await Chat.find({date:birthday}).exec();
 
@@ -31,14 +39,9 @@ const getAll = async(req, res) => {
 const create = (req, res, next) => {
     let chat = new Chat();
     chat.text = req.body.text;
-    chat.user = req.body.user;
 
-    const { authorization } =   req.headers;
-        var stringeske = "bearer "; 
-        var token = authorization.slice(stringeske.length, authorization.length);
-
-        const {date} = jwt.decode(token);
-        let birthday = date.toString().substr(4);
+    const {birthday, username} = cutBday(req.headers);
+        chat.user = username;
         chat.date = birthday;
 
     chat.save( (err, doc) =>{
