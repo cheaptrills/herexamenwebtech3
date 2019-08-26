@@ -1,6 +1,6 @@
 
 // Primus LIVE
-primus = Primus.connect("http://localhost:3000/", {
+primus = Primus.connect("http://localhost:3000", {
     reconnect:{
         max: Infinity,
         min: 500,
@@ -9,7 +9,7 @@ primus = Primus.connect("http://localhost:3000/", {
 });
 
 primus.on('data', data=>{
-    console.log(data);
+    addNewMessage(data.data);
 });
 
 var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
@@ -28,19 +28,25 @@ var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
         }).then(response =>{
                 return response.json();
         }).then(json => {
-alert('Yeet');
-
             primus.write({
                 "action": "sendedMessage",
                 "data": json
             });
-
-            addNewMessage(json);
         });
 });
 
-const addNewMessage =(data) => {
+const addNewMessage =(json) => {
+    const chatmessage = document.querySelector("#chatwindow");
+    const holder = document.createElement('DIV');
 
+    const oData = `
+    <div>
+        <p>${json.data.text}</p>
+        <pre>${json.data.user}</pre>
+    </div>`;
+
+    holder.innerHTML = oData;
+    chatmessage.append(holder);
 }
 
 const getMessages = async () => {
@@ -53,6 +59,10 @@ const getMessages = async () => {
 
     if(result.status === 200){
         data = await result.json();
-        
+
+        data.data.chat.map(x=>{
+            console.log(x);
+            addNewMessage({data:x});
+        });
     }
 };

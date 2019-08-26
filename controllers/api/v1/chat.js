@@ -54,6 +54,7 @@ const create = (req, res, next) => {
         if(!err){
             res.json({
                 "status": "succes",
+                "data": chat
             });
         }
     }) 
