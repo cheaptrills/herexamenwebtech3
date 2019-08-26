@@ -20,7 +20,9 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
-    "pug": "^2.0.4"
+    "primus": "^7.3.3",
+    "pug": "^2.0.4",
+    "ws": "^7.1.2"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
