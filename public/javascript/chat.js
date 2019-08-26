@@ -1,3 +1,13 @@
+
+// Primus LIVE
+primus = Primus.connect("http://localhost:5000/", {
+    reconnect:{
+        max: Infinity,
+        min: 500,
+        retries: 10
+    }
+});
+
 var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
     let message = document.querySelector('#chat').value;
 
