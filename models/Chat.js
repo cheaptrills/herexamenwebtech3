@@ -5,9 +5,11 @@ const chatSchema = new Schema({
         type: String,
         required: true
     },
-    user: String,
+    date: String,
+    user: String
 });
  
 const Chat = mongoose.model('Chat', chatSchema);
 
 module.exports = Chat;
+
