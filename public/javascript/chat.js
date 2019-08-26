@@ -1,6 +1,6 @@
 
 // Primus LIVE
-primus = Primus.connect("http://localhost:5000/", {
+primus = Primus.connect("http://localhost:3000/", {
     reconnect:{
         max: Infinity,
         min: 500,
