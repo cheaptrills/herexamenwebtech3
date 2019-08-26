@@ -8,6 +8,10 @@ primus = Primus.connect("http://localhost:3000/", {
     }
 });
 
+primus.on('data', data=>{
+    console.log(data);
+});
+
 var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
     let message = document.querySelector('#chat').value;
 
@@ -19,12 +23,25 @@ var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
             },
             body: JSON.stringify({
 
-                "message": message
+                "text": message
             })
         }).then(response =>{
                 return response.json();
-        })
+        }).then(json => {
+alert('Yeet');
+
+            primus.write({
+                "action": "sendedMessage",
+                "data": json
+            });
+
+            addNewMessage(json);
+        });
 });
+
+const addNewMessage =(data) => {
+
+}
 
 const getMessages = async () => {
     const result = await fetch('http://localhost:3000/api/v1/chat',{
