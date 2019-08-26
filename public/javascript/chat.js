@@ -1,6 +1,6 @@
 
 // Primus LIVE
-primus = Primus.connect("http://localhost:3000", {
+primus = Primus.connect(`http://localhost:3000?bday=${localStorage.getItem("birthday")}`, {
     reconnect:{
         max: Infinity,
         min: 500,
@@ -66,3 +66,5 @@ const getMessages = async () => {
         });
     }
 };
+
+getMessages();

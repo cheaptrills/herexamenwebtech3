@@ -7,8 +7,14 @@ const go = (server) => {
     console.log('New spark connected');
 
     spark.on('data', data => {
-      console.log(data);
-      primus.write(data);
+      // primus.write(data);
+
+      primus.forEach((sparky, id, connection) => {
+        // Make sure only ppl with the same birthday get the message
+        if(sparky.query.bday == spark.query.bday){
+          sparky.write(data);
+        }
+      });
     });
   })
 } 

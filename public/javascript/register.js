@@ -26,7 +26,8 @@ var btnRegister = document.querySelector('#submit').addEventListener("click",(e)
 
                 let token = json.data.token;
                 localStorage.setItem("token",token);
-                window.location.href = "http://localhost:3000";
+                localStorage.setItem('birthday', json.data.birthday.toString().substr(4));
+                window.location.href = "http://localhost:3000/chat";
             }
         })
         alert("YEET");

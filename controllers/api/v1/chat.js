@@ -36,6 +36,7 @@ const getAll = async(req, res) => {
     }
 }
 
+
 const create = (req, res, next) => {
     let chat = new Chat();
     chat.text = req.body.text;

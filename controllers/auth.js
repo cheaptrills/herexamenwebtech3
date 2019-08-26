@@ -21,7 +21,8 @@ const date = req.body.date;
          res.json({
             "status": "succes",
             "data": {
-                "token": token
+                "token": token,
+                "birthday": user.date
             }
         });
     }).catch(error=>{
@@ -53,7 +54,8 @@ const login = async (req, res, next) => {
             
         "status": "succes",
         "data": {
-            "token": token
+            "token": token,
+            "birthday": user.date
         }
         });
     }catch(exception){
