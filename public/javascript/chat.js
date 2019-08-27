@@ -32,6 +32,7 @@ var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
                 "action": "sendedMessage",
                 "data": json
             });
+            document.querySelector('#chat').value = "";
         });
 });
 
