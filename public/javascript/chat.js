@@ -1,6 +1,6 @@
 
 // Primus LIVE
-primus = Primus.connect(`http://localhost:3000?bday=${localStorage.getItem("birthday")}`, {
+primus = Primus.connect(`/users/signup?bday=${localStorage.getItem("birthday")}`, {
     reconnect:{
         max: Infinity,
         min: 500,
@@ -15,7 +15,7 @@ primus.on('data', data=>{
 var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
     let message = document.querySelector('#chat').value;
 
-    fetch('http://localhost:3000/api/v1/chat',{
+    fetch('/api/v1/chat',{
             method: "post",
             headers: {
                 'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const addNewMessage =(json) => {
 }
 
 const getMessages = async () => {
-    const result = await fetch('http://localhost:3000/api/v1/chat',{
+    const result = await fetch('/api/v1/chat',{
         method: "get",
         headers:{
             'Authorization': 'Bearer ' + localStorage.getItem("token")

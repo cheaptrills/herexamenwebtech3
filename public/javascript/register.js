@@ -3,7 +3,7 @@ var btnRegister = document.querySelector('#submit').addEventListener("click",(e)
     let password = document.querySelector('#password').value;
     let date = document.querySelector('#date').value;
 
-    fetch('http://localhost:3000/users/signup',{
+    fetch('/users/signup',{
             method: "post",
             headers: {
                 'Content-Type': 'application/json'
@@ -27,8 +27,7 @@ var btnRegister = document.querySelector('#submit').addEventListener("click",(e)
                 let token = json.data.token;
                 localStorage.setItem("token",token);
                 localStorage.setItem('birthday', json.data.birthday.toString().substr(4));
-                window.location.href = "http://localhost:3000/chat";
+                window.location.href = "/chat";
             }
         })
-        alert("YEET");
 });
