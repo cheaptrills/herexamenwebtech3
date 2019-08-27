@@ -8,10 +8,11 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiChatRouter = require('./routes/api/v1/chat');
 const passport = require('./passport/passport');
+const config = require('config');
 
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb://localhost:27017/chat', {
+mongoose.connect(process.env.dbconn || config.get('Database.con'), {
   useNewUrlParser: true
 });
 

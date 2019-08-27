@@ -1,5 +1,6 @@
 const passport = require('passport');
 const User = require('../models/User');
+const config = require('config');
 
 // use static authenticate method of model in LocalStrategy
 passport.use(User.createStrategy());
@@ -12,7 +13,7 @@ var JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 var opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'secretje';
+opts.secretOrKey = config.get('jwt.secret');
 /*opts.issuer = 'accounts.examplesoft.com';
 opts.audience = 'yoursite.net';*/
 passport.use(new JwtStrategy(opts, function(jwt_payload, done) {

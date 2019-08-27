@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const signup = async(req, res, next) => {
 let username = req.body.username;
@@ -16,7 +17,7 @@ const date = req.body.date;
             uid: result.id,
             date: user.date,
             username: user.username
-        }, "secretje");
+        }, config.get('jwt.secret'));
 
          res.json({
             "status": "succes",
@@ -48,7 +49,7 @@ const login = async (req, res, next) => {
             uid: user.id,
             username: user.username,
             date: user.date
-        }, "secretje");
+        }, config.get('jwt.secret'));
 
          return res.json({
             

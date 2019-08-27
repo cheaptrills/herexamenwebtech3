@@ -1,0 +1,9 @@
+{
+    "Database":{
+        "con": "mongodb+srv://vince:DtctHU6qphI6W1TA@cluster0-ksvsy.mongodb.net/test?retryWrites=true&w=majority"
+    },
+    "jwt":{
+        "secret": "secretje"
+    }
+
+}
