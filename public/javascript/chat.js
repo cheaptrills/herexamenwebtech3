@@ -61,7 +61,6 @@ const getMessages = async () => {
         data = await result.json();
 
         data.data.chat.map(x=>{
-            console.log(x);
             addNewMessage({data:x});
         });
     }

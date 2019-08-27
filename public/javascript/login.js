@@ -25,7 +25,7 @@ var btnLogin = document.querySelector('#submit').addEventListener("click",(e)=>{
                 localStorage.setItem('birthday', birthday.toString().substr(4));
                 console.log(json);
 
-                // window.location.href = "/chat";
+                window.location.href = "/chat";
             }
         })
 });
