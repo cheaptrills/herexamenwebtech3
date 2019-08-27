@@ -2,18 +2,18 @@ extends layout
 
 block content
   .box
-  h1 login
-  form()
-    .form-group
-      label(for='username') username
-      input#username(type="text")
-    .form-group
-      label(for='password') password
-      input#password(type="password")
-    .form-group
-      button#submit(type="button" class="btn_submit") login
-  .actions
-   a(href='signup')
-    button no account yet? make it here
+    h1 login
+    form()
+      .form-group
+        label(for='username') username
+        input#username(type="text")
+      .form-group
+        label(for='password') password
+        input#password(type="password")
+      .form-group
+        button#submit(type="button" class="btn_submit") login
+    .actions
+    a(href='signup')
+      button no account yet? make it here
 
   script(src="../javascript/login.js")
