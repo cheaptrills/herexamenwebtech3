@@ -2,21 +2,21 @@ extends layout
 
 block content
   .box
-  h1 Register
-  form()
-    .form-group
-      label(for='username') username
-      input#username(type="text")
-    .form-group
-      label(for='password') password
-      input#password(type="password")
-    .form-group
-      label(for='date') date
-      input#date(type='date')
-    .form-group
-      button#submit(type="button", class="btn_submit") Register
-  .actions
-   a(href='/')
-    button got an acc? login here
+    h1 Register
+    form()
+      .form-group
+        label(for='username') username
+        input#username(type="text")
+      .form-group
+        label(for='password') password
+        input#password(type="password")
+      .form-group
+        label(for='date') date
+        input#date(type='date')
+      .form-group
+        button#submit(type="button", class="btn_submit") Register
+    .actions
+    a(href='/')
+      button got an acc? login here
 
   script(src="../javascript/register.js")
